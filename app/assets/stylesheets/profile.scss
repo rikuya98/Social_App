@@ -15,8 +15,10 @@
 
 .profile_avatar {
     img {
-        height: 77px;
-        width: 77px;
+        height: 100px;
+        width: 100px;
+        border-radius: 100px;
+        border: solid 1px black;
     }
     text-align: center;
     margin-bottom: 40px;
