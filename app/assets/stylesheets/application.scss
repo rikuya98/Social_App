@@ -1,13 +1,19 @@
 @import 'variables';
 @import 'buttons';
 @import 'form';
-
+@import 'profile';
 body {
     height: 100%;
     width: 100%;
     max-width: 900px;
+    background-color: #F2F2F2;
+
+
+
     font-size: $base-font-size;
     color: $base-color;
+    font-family: Poppins Medium;
+    font-style: normal;
     margin: 0;
 }
 .container {
