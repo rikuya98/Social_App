@@ -5,4 +5,9 @@ def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:account_name])
 end
 
+def current_user
+    ActiveDecorator::Decorator.instance.decorate(super) if super.present?
+    super
+end
+
 end

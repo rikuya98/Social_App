@@ -1,10 +1,10 @@
 .container
   .back_btn
-    = image_tag user.avatar_image
+    = image_tag 'backbtn.png'
   .profile_name
     %h2= current_user.account_name
   .profile_avatar
-    = image_tag 'test_avatar.png'
+    = image_tag current_user.avatar_image
   .profile_info
     %p Posts
     %p Followers
