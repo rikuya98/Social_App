@@ -1,17 +1,22 @@
 .container
   .back_btn
     = image_tag 'backbtn.png'
-  .profile_name
-    %h2= current_user.account_name
+    .profile_name
+      %h2= current_user.account_name
+    .menu_btn.dropdown
+      = image_tag 'menu-icon.png'
+      .dropdown-content
+        = link_to 'ログアウト',destroy_user_session_path, data: { method: 'delete'}
   .profile_avatar
     .dropdown
       = image_tag current_user.avatar_image
       .dropdown-content
-        = link_to 'アバターの変更' 
-        = link_to 'プロフィール編集'
+        = link_to 'プロフィール編集',edit_profile_path
   .profile_info
     %p Posts
     %p Followers
     %p Following
 
 
+
+= javascript_pack_tag 'profile'
