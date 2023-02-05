@@ -1,0 +1,25 @@
+label {
+    font-size: 14px;
+    color: #979797;
+  }
+
+  input,select {
+    &.text {
+      width: 100%;
+      margin: 8px 0px;
+      padding: 16px 24px;
+      border: 1px solid #EBEBEB;
+    }
+  }
+
+textarea {
+    width: 100%;
+    margin: 8px 0px;
+    padding: 16px 24px;
+    min-height: 440px;
+    resize: vertical;
+    border: 1px solid #EBEBEB;
+    &.sm {
+    min-height: 160px;
+    }
+  }

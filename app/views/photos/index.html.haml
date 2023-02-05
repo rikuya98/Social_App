@@ -1,0 +1,12 @@
+.container
+  .back_btn
+    = link_to :back do
+      = image_tag 'backbtn.png'
+    .top_center
+      = link_to do
+        = image_tag 'Group.png'
+    .menu_btn.dropdown
+      = image_tag 'menu-icon.png'
+      .dropdown-content
+        = link_to 'プロフィール', profile_path
+        = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete'}

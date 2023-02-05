@@ -1,0 +1,17 @@
+
+
+.profile_avatar {
+    img {
+        height: 100px;
+        width: 100px;
+        border-radius: 100px;
+        border: solid 1px black;
+    }
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.profile_info {
+    display: flex;
+    justify-content: space-around;
+}
