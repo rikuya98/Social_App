@@ -1,32 +1,32 @@
 class ProfilesController < ApplicationController
- before_action :authenticate_user!
+before_action :authenticate_user!
 
-    def show
+  def show
     @profile = current_user.profile
-    end
+  end
 
-    def edit
+  def edit
     @profile = current_user.prepare_profile
-    end
+  end
 
-    def update
+  def update
     @profile = current_user.prepare_profile
     @profile.assign_attributes(profile_params)
     if @profile.save
-        redirect_to profile_path, notice: 'プロフィール更新'
+      redirect_to profile_path, notice: 'プロフィール更新'
     else
-        flash.now[:error] = '更新できませんでした'
-        render :edit
+      flash.now[:error] = '更新できませんでした'
+      render :edit
     end
-    end
+  end
 
-    private
-    def profile_params
+  private
+  def profile_params
     params.require(:profile).permit(
-        :introduction,
-        :gender,
-        :subscribed,
-        :avatar
-        )
-    end
+      :introduction,
+      :gender,
+      :subscribed,
+      :avatar
+      )
+  end
 end
