@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def show
     @profile = current_user.profile
@@ -21,12 +21,13 @@ before_action :authenticate_user!
   end
 
   private
+
   def profile_params
     params.require(:profile).permit(
       :introduction,
       :gender,
       :subscribed,
       :avatar
-      )
+    )
   end
 end
