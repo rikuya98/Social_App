@@ -3,10 +3,27 @@
     = link_to :back do
       = image_tag 'backbtn.png'
     .top_center
-      = link_to do
+      = link_to new_photo_path do
         = image_tag 'Group.png'
     .menu_btn.dropdown
       = image_tag 'menu-icon.png'
       .dropdown-content
         = link_to 'プロフィール', profile_path
         = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete'}
+- @photos.each do |photo|
+  .user_date
+    .user_name
+      =photo.user.account_name
+      .user_post
+        .user_image1
+        - if photo.images.attached?
+          - photo.images.each do |image|
+            = image_tag image
+  .btn_group
+    = image_tag 'like.png'
+    = image_tag 'comment.png'
+    = image_tag 'share.png'
+  .post_content
+    =photo.content
+  .post_comment
+    テスト。テスト。
