@@ -17,7 +17,15 @@
     %p Posts
     %p Followers
     %p Following
-
-
-
+- current_user.photos.each do |photo|
+  .user_post
+    - if photo.images.attached?
+      .user_image1
+        = image_tag photo.images[0]
+    - if photo.images.length > 1
+      .user_image2.set_flex
+        = image_tag photo.images[1]
+    - if photo.images.length > 2
+      .user_image3
+        = image_tag photo.images[2]
 = javascript_pack_tag 'profile'
