@@ -3,6 +3,8 @@
 @import 'form';
 @import 'profile';
 @import 'common';
+@import 'photo';
+@import 'flash';
 body {
     height: 100%;
     width: 100%;
@@ -15,7 +17,7 @@ body {
     color: $base-color;
     font-family: Poppins Medium;
     font-style: normal;
-    margin: 0;
+    margin: 10px;
 }
 .container {
     width: 90%;

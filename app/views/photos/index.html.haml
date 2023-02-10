@@ -3,10 +3,36 @@
     = link_to :back do
       = image_tag 'backbtn.png'
     .top_center
-      = link_to do
+      = link_to new_photo_path do
         = image_tag 'Group.png'
     .menu_btn.dropdown
       = image_tag 'menu-icon.png'
       .dropdown-content
         = link_to 'プロフィール', profile_path
         = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete'}
+- @photos.each do |photo|
+  .user_date
+    .user_display
+      = image_tag photo.user.avatar_image
+      .user_name
+        %p.name= photo.user.account_name
+        %p.date= time_ago_in_words(photo.created_at) + '前'
+    .user_post
+      - if photo.images.attached?
+        .user_image1
+          = image_tag photo.images[0]
+      - if photo.images.length > 1
+        .user_image2.set_flex
+          = image_tag photo.images[1]
+      - if photo.images.length > 2
+        .user_image3
+          = image_tag photo.images[2]
+  .btn_group
+    = image_tag 'like.png'
+    = image_tag 'comment.png'
+    = link_to "https://twitter.com/share?url=#{request.url}&text=【以下の投稿をシェアします】%0a%0a#{ photo.content }", title: 'Twitter', target: '_blank' do
+      = image_tag 'share.png'
+  .post_content
+    =photo.content
+  .post_comment
+    テスト。テスト。
