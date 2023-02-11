@@ -11,7 +11,7 @@
         = link_to 'プロフィール', profile_path
         = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete'}
 - @photos.each do |photo|
-  .user_date
+  .user_date#photo-index{data: {photo_id: photo.id}}
     .user_display
       = image_tag photo.user.avatar_image
       .user_name
@@ -28,10 +28,15 @@
         .user_image3
           = image_tag photo.images[2]
   .btn_group
-    = image_tag 'like.png'
-    = image_tag 'comment.png'
-    = link_to "https://twitter.com/share?url=#{request.url}&text=【以下の投稿をシェアします】%0a%0a#{ photo.content }", title: 'Twitter', target: '_blank' do
-      = image_tag 'share.png'
+    .photo-heart.hidden
+      = image_tag 'like.png'
+    .inphoto-heart.hidden
+      = image_tag 'none_like.png'
+    .photo_comment
+      = image_tag 'comment.png'
+    .photo_share
+      = link_to "https://twitter.com/share?url=#{request.url}&text=【以下の投稿をシェアします】%0a%0a#{ photo.content }", title: 'Twitter', target: '_blank' do
+        = image_tag 'share.png'
   .post_content
     =photo.content
   .post_comment

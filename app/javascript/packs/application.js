@@ -7,8 +7,23 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+import axios from 'axios'
 import $ from 'jquery'
 
+
+document.addEventListener('turbolinks:load', ()=> {
+    const dataset = $('#photo-index').data()
+    const photoId = dataset.photoId
+    axios.get(`/photos/${photoId}/likes`)
+    .then((response) => {
+        const hasLiked = response.data.hasLiked
+        if (hasLiked) {
+            $('.photo-heart').removeClass('hidden')
+        }else{
+            $('.inphoto-heart').removeClass('hidden')
+        }
+    })
+})
 
 
 
