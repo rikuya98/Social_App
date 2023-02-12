@@ -28,10 +28,12 @@
         .user_image3
           = image_tag photo.images[2]
   .btn_group
-    .photo-heart.hidden
-      = image_tag 'like.png'
-    .inphoto-heart.hidden
-      = image_tag 'none_like.png'
+    .like_btn.hidden
+      #like-btn-zone{id: photo.id}
+        = image_tag 'like.png'
+    .like_del_btn.hidden
+      #like-del-btn-zone{id: photo.id}
+        = image_tag 'none_like.png'
     .photo_comment
       = image_tag 'comment.png'
     .photo_share

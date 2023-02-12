@@ -7,9 +7,11 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-import axios from 'axios'
 import $ from 'jquery'
+import axios from 'axios'
 
+import { csrfToken } from 'rails-ujs'
+axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 document.addEventListener('turbolinks:load', ()=> {
     const dataset = $('#photo-index').data()
@@ -18,10 +20,36 @@ document.addEventListener('turbolinks:load', ()=> {
     .then((response) => {
         const hasLiked = response.data.hasLiked
         if (hasLiked) {
-            $('.photo-heart').removeClass('hidden')
+            $('.like_btn').removeClass('hidden')
         }else{
-            $('.inphoto-heart').removeClass('hidden')
+            $('.like_del_btn').removeClass('hidden')
         }
+    })
+
+
+
+    $(`#like-del-btn-zone_${photoId}`).on('click', () => {
+        axios.post(`/photos/${photoId}/likes`)
+        .then((response) => {
+            console.log(response)
+        })
+        .catch((e) => {
+            window.alert('Error')
+            console.log(e)
+
+        })
+    })
+
+
+    $(`#like-btn-zone_${photoId}`).on('click', () => {
+        axios.delete(`/photos/${photoId}/likes`)
+        .then((response) => {
+            console.log(response)
+        })
+        .catch((e) => {
+            window.alert('Error')
+            console.log(e)
+        })
     })
 })
 
