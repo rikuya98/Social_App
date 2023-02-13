@@ -11,7 +11,7 @@
         = link_to 'プロフィール', profile_path
         = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete'}
 - @photos.each do |photo|
-  .user_date#photo-index{data: {photo_id: photo.id}}
+  .user_date
     .user_display
       = image_tag photo.user.avatar_image
       .user_name
@@ -28,12 +28,8 @@
         .user_image3
           = image_tag photo.images[2]
   .btn_group
-    .like_btn.hidden
-      #like-btn-zone{id: photo.id}
-        = image_tag 'like.png'
-    .like_del_btn.hidden
-      #like-del-btn-zone{id: photo.id}
-        = image_tag 'none_like.png'
+    #like_btn_zone{id:photo.id}
+      = render 'likes', photo: photo
     .photo_comment
       = image_tag 'comment.png'
     .photo_share

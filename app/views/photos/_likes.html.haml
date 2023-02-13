@@ -1,0 +1,8 @@
+- if current_user.has_liked?(photo)
+  .like_btn
+    =link_to photo_likes_path(photo), data: {method: 'delete', remote: true} do
+      = image_tag 'like.png'
+- else
+  .like_del_btn
+    =link_to photo_likes_path(photo), data: {method: 'post', remote: true} do
+      = image_tag 'none_like.png'
