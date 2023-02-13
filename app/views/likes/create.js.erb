@@ -1,0 +1,2 @@
+const likeId = document.getElementById('like_btn_zone_<%= @photo.id %>');
+likeId.innerHTML = "<%= escape_javascript(render "photos/likes", photo: @photo) %>"
